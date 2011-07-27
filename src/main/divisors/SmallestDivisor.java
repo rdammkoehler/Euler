@@ -8,7 +8,7 @@ public class SmallestDivisor {
 		while (!evenlyDivisibleByAll) {
 			evenlyDivisibleByAll = true;
 			answer++;
-			for (int divisor = smallest; divisor <= largest; divisor++) {
+			for (int divisor = smallest; evenlyDivisibleByAll && divisor <= largest; divisor++) {
 				evenlyDivisibleByAll &= answer % divisor == 0;
 			}
 		}
