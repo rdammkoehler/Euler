@@ -1,4 +1,4 @@
-package prime;
+package com.noradltd.euler;
 
 public class PrimeCheck {
 

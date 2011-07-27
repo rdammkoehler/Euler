@@ -1,8 +1,7 @@
-package finder;
+package com.noradltd.euler;
 
 import java.util.Stack;
 
-import prime.PrimeCheck;
 
 public class PrimeFinder {
 

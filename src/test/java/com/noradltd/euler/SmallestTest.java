@@ -1,10 +1,10 @@
-package divisors;
+package com.noradltd.euler;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+
+import com.noradltd.euler.SmallestDivisor;
 
 public class SmallestTest {
 	/*
@@ -12,17 +12,6 @@ public class SmallestTest {
 	 * from 1 to 10 without any remainder. What is the smallest positive number
 	 * that is evenly divisible by all of the numbers from 1 to 20?
 	 */
-	private long start = 0;
-
-	@Before
-	public void before() {
-		start = System.nanoTime();
-	}
-
-	@After
-	public void after() {
-		System.out.println(System.nanoTime() - start + "ns");
-	}
 
 	@Test
 	public void baseLineFactAboutOneThruTen() {

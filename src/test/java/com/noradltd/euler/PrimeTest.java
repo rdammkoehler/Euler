@@ -1,8 +1,10 @@
-package prime;
+package com.noradltd.euler;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import com.noradltd.euler.PrimeCheck;
 
 public class PrimeTest {
 	/*
