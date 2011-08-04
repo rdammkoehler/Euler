@@ -2,34 +2,28 @@ package com.noradltd.euler;
 
 public class PythagoreanTriplet {
 
-	public boolean accept(int a, int b, int c) {
-		return sumIsOneThousand(a, b, c) && isTriplet(a, b, c);
-	}
-
-	private boolean isTriplet(int a, int b, int c) {
-		return a < b && b < c;
-	}
-
-	private boolean sumIsOneThousand(int a, int b, int c) {
-		return a + b + c == 1000;
-	}
-
-	public boolean isPythagorean(int a, int b, int c) {
-		return (a * a) + (b * b) == (c * c);
-	}
-
 	public Triplet findPythagorean() {
-		Triplet triplet = null;
-		for (int aIdx = 0; aIdx < 1000; aIdx++) {
-			for (int bIdx = aIdx + 1; bIdx < 1000; bIdx++) {
-				for (int cIdx = bIdx + 1; cIdx < 1000; cIdx++) {
-					if (accept(aIdx, bIdx, cIdx) && isPythagorean(aIdx, bIdx, cIdx)) {
-						triplet = new Triplet(aIdx, bIdx, cIdx);
-					}
+		Triplet triplet = new Triplet(0, 0, 0);
+		for (int aIdx = 0; limitA(aIdx) && !triplet.isValid(); aIdx++) {
+			for (int bIdx = aIdx + 1; limitB(aIdx, bIdx) < 1000 && !triplet.isValid(); bIdx++) {
+				for (int cIdx = bIdx + 1; limitC(aIdx, bIdx, cIdx) < 1000 && !triplet.isValid(); cIdx++) {
+					triplet = new Triplet(aIdx, bIdx, cIdx);
 				}
 			}
 		}
 		return triplet;
+	}
+
+	private boolean limitA(int aIdx) {
+		return (3 * aIdx) < 1000;
+	}
+
+	private int limitB(int aIdx, int bIdx) {
+		return aIdx + (2 * bIdx) - 1;
+	}
+
+	private int limitC(int aIdx, int bIdx, int cIdx) {
+		return aIdx + bIdx + cIdx - 1;
 	}
 
 	static class Triplet {
@@ -39,6 +33,10 @@ public class PythagoreanTriplet {
 			this.a = a;
 			this.b = b;
 			this.c = c;
+		}
+
+		public boolean isValid() {
+			return accept(a, b, c) && isPythagorean(a, b, c);
 		}
 
 		@Override
@@ -72,6 +70,22 @@ public class PythagoreanTriplet {
 			if (c != other.c)
 				return false;
 			return true;
+		}
+
+		public boolean accept(int a, int b, int c) {
+			return sumIsOneThousand(a, b, c) && isTriplet(a, b, c);
+		}
+
+		private boolean isTriplet(int a, int b, int c) {
+			return a < b && b < c;
+		}
+
+		private boolean sumIsOneThousand(int a, int b, int c) {
+			return a + b + c == 1000;
+		}
+
+		public boolean isPythagorean(int a, int b, int c) {
+			return (a * a) + (b * b) == (c * c);
 		}
 
 	}
